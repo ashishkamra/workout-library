@@ -1,7 +1,7 @@
 export type WorkoutType = "A" | "B";
 export type Units = "metric" | "imperial";
 export type RestKind = "major" | "minor";
-export type LoadType = "dumbbell" | "bodyweight";
+export type LoadType = "dumbbell" | "bodyweight" | "band";
 
 export interface UserProfile {
   weightKg: number;

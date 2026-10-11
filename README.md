@@ -1,6 +1,6 @@
 # Forge Library
 
-A workout library of 13 strength movements and two reference sessions. Browse setup, cues, common mistakes, and a short demo. Nothing is logged.
+A workout library of strength movements and two reference sessions. Browse setup, cues, common mistakes, and a short demo. Nothing is logged.
 
 Live site: https://ashishkamra.github.io/workout-library/
 

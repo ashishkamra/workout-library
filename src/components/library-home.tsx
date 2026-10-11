@@ -71,6 +71,7 @@ export function LibraryHome({
             [
               ["all", "Any equipment"],
               ["dumbbell", "Dumbbell"],
+              ["band", "Band"],
               ["bodyweight", "Bodyweight"],
             ] as const
           ).map(([id, label]) => (

@@ -36,6 +36,14 @@ const PATTERN_BY_ID: Record<string, Pattern> = {
   "dead-bug": "core",
   "side-plank": "core",
   "farmer-carry": "carry",
+  "mcgill-curl-up": "core",
+  "toe-tap": "core",
+  "reverse-crunch": "core",
+  "pallof-press": "core",
+  "band-dead-bug": "core",
+  "band-bridge": "hinge",
+  "band-squat": "squat",
+  "band-rdl": "hinge",
 };
 
 export function patternOf(id: string): Pattern {
@@ -55,7 +63,9 @@ export function doseLabel(ex: ExerciseDef): string {
 }
 
 export function equipmentLabel(load: LoadType): string {
-  return load === "dumbbell" ? "Dumbbell" : "Bodyweight";
+  if (load === "dumbbell") return "Dumbbell";
+  if (load === "band") return "Band";
+  return "Bodyweight";
 }
 
 export interface SessionDef {

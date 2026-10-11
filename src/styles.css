@@ -215,6 +215,79 @@ html.light {
   text-align: left;
 }
 
+.form-copy {
+  max-width: 38rem;
+}
+
+.step-list,
+.mark-list,
+.cue-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.step-list li {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+.step-num {
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 1px;
+  border-radius: 999px;
+  background: var(--color-raised);
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.mark-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mark-list li {
+  display: grid;
+  grid-template-columns: 0.7rem 1fr;
+  gap: 8px;
+  align-items: start;
+}
+
+.mark-list li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-top: 0.5rem;
+  border-radius: 999px;
+  background: var(--color-muted);
+}
+
+.cue-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cue-list li {
+  border-radius: 999px;
+  background: var(--color-raised);
+  color: var(--color-fg);
+  padding: 6px 12px;
+}
+
 .back-link {
   display: inline-flex;
   align-items: center;

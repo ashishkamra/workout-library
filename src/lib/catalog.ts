@@ -44,6 +44,11 @@ const PATTERN_BY_ID: Record<string, Pattern> = {
   "band-bridge": "hinge",
   "band-squat": "squat",
   "band-rdl": "hinge",
+  "band-row": "pull",
+  "band-press": "push",
+  "band-pull-apart": "pull",
+  "band-face-pull": "pull",
+  "band-curl": "arms",
 };
 
 export function patternOf(id: string): Pattern {

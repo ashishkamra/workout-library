@@ -1,0 +1,397 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0c0d0c;
+  --color-surface: #161816;
+  --color-raised: #1c1f1c;
+  --color-fg: #e6e8e3;
+  --color-muted: #8d9388;
+  --color-subtle: #6a7066;
+  --color-accent: #c5d0bc;
+  --color-accent-fg: #0c0d0c;
+  --color-border: #2a2e2a;
+  --color-danger: #c45c4a;
+  --color-success: #7a9a72;
+  --color-ring: #c5d0bc;
+  --font-sans: "Segoe UI", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Segoe UI", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --shadow-border: 0 0 0 1px rgb(255 255 255 / 0.08);
+}
+
+html.light {
+  --color-bg: #f3f4f1;
+  --color-surface: #ffffff;
+  --color-raised: #eceee9;
+  --color-fg: #1a1c19;
+  --color-muted: #5c6158;
+  --color-subtle: #7a8074;
+  --color-accent: #3d4a38;
+  --color-accent-fg: #f4f5f1;
+  --color-border: #d4d8d0;
+  --color-danger: #a84538;
+  --color-success: #4e6e48;
+  --color-ring: #3d4a38;
+  --shadow-border: 0 0 0 1px rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.app-shell {
+  min-height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--color-bg);
+  position: relative;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.stepper-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: var(--color-raised);
+  color: var(--color-fg);
+  font-size: 1.5rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.stepper-btn:active {
+  transform: scale(0.97);
+}
+
+.ex-visual {
+  width: 100%;
+  height: 220px;
+  border-radius: 20px;
+  background: #0c0d0c;
+  box-shadow: var(--shadow-border);
+  overflow: hidden;
+  position: relative;
+}
+
+.ex-visual svg,
+.ex-visual video {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ex-visual video {
+  object-fit: contain;
+  object-position: center;
+}
+
+.ex-visual.is-paused .anim,
+.ex-visual.is-paused .anim * {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ex-visual .anim,
+  .ex-visual .anim * {
+    animation: none !important;
+  }
+}
+
+/* Stick-figure animation helpers */
+.fig {
+  stroke: var(--color-fg);
+  fill: none;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.fig-fill {
+  fill: var(--color-fg);
+  stroke: none;
+}
+
+.db {
+  fill: var(--color-accent);
+  stroke: none;
+}
+
+.floor-line {
+  stroke: var(--color-border);
+  stroke-width: 2;
+}
+
+.arrow {
+  stroke: var(--color-accent);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.chair {
+  fill: none;
+  stroke: var(--color-muted);
+  stroke-width: 3;
+}
+
+.working-side {
+  stroke: var(--color-accent);
+}
+
+@keyframes squat-drop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(28px) scaleY(0.92);
+  }
+}
+
+@keyframes hinge-fold {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(48deg);
+  }
+}
+
+@keyframes press-down {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(22px);
+  }
+}
+
+@keyframes row-pull {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(6px, -18px);
+  }
+}
+
+@keyframes walk-l {
+  0%,
+  100% {
+    transform: rotate(18deg);
+  }
+  50% {
+    transform: rotate(-18deg);
+  }
+}
+
+@keyframes walk-r {
+  0%,
+  100% {
+    transform: rotate(-18deg);
+  }
+  50% {
+    transform: rotate(18deg);
+  }
+}
+
+@keyframes lunge-drop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(18px);
+  }
+}
+
+@keyframes bridge-up {
+  0%,
+  100% {
+    transform: rotate(12deg);
+  }
+  50% {
+    transform: rotate(-8deg);
+  }
+}
+
+@keyframes curl-up {
+  0%,
+  100% {
+    transform: rotate(8deg);
+  }
+  50% {
+    transform: rotate(-115deg);
+  }
+}
+
+@keyframes bug-extend {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(50deg);
+  }
+}
+
+@keyframes plank-hold {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  40%,
+  60% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes circle-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scap-pinch {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+}
+
+.anim-squat {
+  animation: squat-drop 3.2s var(--ease, ease-in-out) infinite;
+  transform-origin: 100px 70px;
+}
+
+.anim-hinge {
+  animation: hinge-fold 3.4s ease-in-out infinite;
+  transform-origin: 100px 118px;
+}
+
+.anim-press {
+  animation: press-down 3s ease-in-out infinite;
+}
+
+.anim-row {
+  animation: row-pull 2.8s ease-in-out infinite;
+}
+
+.anim-walk-l {
+  animation: walk-l 1.2s ease-in-out infinite;
+  transform-origin: 0 0;
+}
+
+.anim-walk-r {
+  animation: walk-r 1.2s ease-in-out infinite;
+  transform-origin: 0 0;
+}
+
+.anim-lunge {
+  animation: lunge-drop 3s ease-in-out infinite;
+}
+
+.anim-bridge {
+  animation: bridge-up 3s ease-in-out infinite;
+  transform-origin: 70px 150px;
+}
+
+.anim-curl {
+  animation: curl-up 2.6s ease-in-out infinite;
+  transform-origin: 0 0;
+}
+
+.anim-bug {
+  animation: bug-extend 3.2s ease-in-out infinite;
+  transform-origin: 0 0;
+}
+
+.anim-plank {
+  animation: plank-hold 2.8s ease-in-out infinite;
+}
+
+.anim-circle {
+  animation: circle-spin 3.6s linear infinite;
+  transform-origin: 100px 88px;
+}
+
+.anim-scap {
+  animation: scap-pinch 2.4s ease-in-out infinite;
+}
+
+.cue-fade {
+  animation: cue-swap 8s ease-in-out infinite;
+}
+
+@keyframes cue-swap {
+  0%,
+  28% {
+    opacity: 1;
+  }
+  33%,
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

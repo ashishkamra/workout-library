@@ -10,13 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as CheckinRouteImport } from './routes/checkin'
-import { Route as HelpRouteImport } from './routes/help'
-import { Route as LibraryRouteImport } from './routes/library'
-import { Route as PlanRouteImport } from './routes/plan'
-import { Route as ProgressRouteImport } from './routes/progress'
-import { Route as SettingsRouteImport } from './routes/settings'
-import { Route as WorkoutRouteImport } from './routes/workout'
+import { Route as SessionsRouteImport } from './routes/sessions'
 import { Route as LibraryIdRouteImport } from './routes/library_.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -24,39 +18,9 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CheckinRoute = CheckinRouteImport.update({
-  id: '/checkin',
-  path: '/checkin',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HelpRoute = HelpRouteImport.update({
-  id: '/help',
-  path: '/help',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LibraryRoute = LibraryRouteImport.update({
-  id: '/library',
-  path: '/library',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PlanRoute = PlanRouteImport.update({
-  id: '/plan',
-  path: '/plan',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProgressRoute = ProgressRouteImport.update({
-  id: '/progress',
-  path: '/progress',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SettingsRoute = SettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const WorkoutRoute = WorkoutRouteImport.update({
-  id: '/workout',
-  path: '/workout',
+const SessionsRoute = SessionsRouteImport.update({
+  id: '/sessions',
+  path: '/sessions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LibraryIdRoute = LibraryIdRouteImport.update({
@@ -67,83 +31,31 @@ const LibraryIdRoute = LibraryIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/checkin': typeof CheckinRoute
-  '/help': typeof HelpRoute
-  '/library': typeof LibraryRoute
-  '/plan': typeof PlanRoute
-  '/progress': typeof ProgressRoute
-  '/settings': typeof SettingsRoute
-  '/workout': typeof WorkoutRoute
+  '/sessions': typeof SessionsRoute
   '/library/$id': typeof LibraryIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/checkin': typeof CheckinRoute
-  '/help': typeof HelpRoute
-  '/library': typeof LibraryRoute
-  '/plan': typeof PlanRoute
-  '/progress': typeof ProgressRoute
-  '/settings': typeof SettingsRoute
-  '/workout': typeof WorkoutRoute
+  '/sessions': typeof SessionsRoute
   '/library/$id': typeof LibraryIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/checkin': typeof CheckinRoute
-  '/help': typeof HelpRoute
-  '/library': typeof LibraryRoute
-  '/plan': typeof PlanRoute
-  '/progress': typeof ProgressRoute
-  '/settings': typeof SettingsRoute
-  '/workout': typeof WorkoutRoute
+  '/sessions': typeof SessionsRoute
   '/library_/$id': typeof LibraryIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/checkin'
-    | '/help'
-    | '/library'
-    | '/plan'
-    | '/progress'
-    | '/settings'
-    | '/workout'
-    | '/library/$id'
+  fullPaths: '/' | '/sessions' | '/library/$id'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/checkin'
-    | '/help'
-    | '/library'
-    | '/plan'
-    | '/progress'
-    | '/settings'
-    | '/workout'
-    | '/library/$id'
-  id:
-    | '__root__'
-    | '/'
-    | '/checkin'
-    | '/help'
-    | '/library'
-    | '/plan'
-    | '/progress'
-    | '/settings'
-    | '/workout'
-    | '/library_/$id'
+  to: '/' | '/sessions' | '/library/$id'
+  id: '__root__' | '/' | '/sessions' | '/library_/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CheckinRoute: typeof CheckinRoute
-  HelpRoute: typeof HelpRoute
-  LibraryRoute: typeof LibraryRoute
-  PlanRoute: typeof PlanRoute
-  ProgressRoute: typeof ProgressRoute
-  SettingsRoute: typeof SettingsRoute
-  WorkoutRoute: typeof WorkoutRoute
+  SessionsRoute: typeof SessionsRoute
   LibraryIdRoute: typeof LibraryIdRoute
 }
 
@@ -156,53 +68,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/checkin': {
-      id: '/checkin'
-      path: '/checkin'
-      fullPath: '/checkin'
-      preLoaderRoute: typeof CheckinRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/help': {
-      id: '/help'
-      path: '/help'
-      fullPath: '/help'
-      preLoaderRoute: typeof HelpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/library': {
-      id: '/library'
-      path: '/library'
-      fullPath: '/library'
-      preLoaderRoute: typeof LibraryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/plan': {
-      id: '/plan'
-      path: '/plan'
-      fullPath: '/plan'
-      preLoaderRoute: typeof PlanRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/progress': {
-      id: '/progress'
-      path: '/progress'
-      fullPath: '/progress'
-      preLoaderRoute: typeof ProgressRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/settings': {
-      id: '/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof SettingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/workout': {
-      id: '/workout'
-      path: '/workout'
-      fullPath: '/workout'
-      preLoaderRoute: typeof WorkoutRouteImport
+    '/sessions': {
+      id: '/sessions'
+      path: '/sessions'
+      fullPath: '/sessions'
+      preLoaderRoute: typeof SessionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/library_/$id': {
@@ -217,13 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CheckinRoute: CheckinRoute,
-  HelpRoute: HelpRoute,
-  LibraryRoute: LibraryRoute,
-  PlanRoute: PlanRoute,
-  ProgressRoute: ProgressRoute,
-  SettingsRoute: SettingsRoute,
-  WorkoutRoute: WorkoutRoute,
+  SessionsRoute: SessionsRoute,
   LibraryIdRoute: LibraryIdRoute,
 }
 export const routeTree = rootRouteImport

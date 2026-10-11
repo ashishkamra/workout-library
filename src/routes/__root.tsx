@@ -7,11 +7,10 @@ import {
 } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
-import { HydrateGate } from "@/components/hydrate-gate";
-import { BottomNav } from "@/components/bottom-nav";
+import { SiteHeader } from "@/components/site-header";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "FORGE";
+const APP_NAME = "Forge Library";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -19,15 +18,14 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       {
         name: "viewport",
-        content:
-          "width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1",
+        content: "width=device-width, initial-scale=1, viewport-fit=cover",
       },
       { title: APP_NAME },
       { name: "theme-color", content: "#0c0d0c" },
       {
         name: "description",
         content:
-          "10-week athletic recomposition trainer. Offline. No account.",
+          "A workout library of strength movements and two reference sessions.",
       },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "mobile-web-app-capable", content: "yes" },
@@ -51,9 +49,7 @@ function RootDocument() {
       <body className="bg-bg text-fg">
         <PreviewHostBridge />
         <AuthProvider>
-          <HydrateGate>
-            <AppFrame />
-          </HydrateGate>
+          <AppFrame />
         </AuthProvider>
         <Scripts />
       </body>
@@ -63,11 +59,10 @@ function RootDocument() {
 
 function AppFrame() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const hideNav = pathname.startsWith("/workout");
   return (
     <div className="app-shell">
+      <SiteHeader path={pathname} />
       <Outlet />
-      {!hideNav ? <BottomNav /> : null}
     </div>
   );
 }

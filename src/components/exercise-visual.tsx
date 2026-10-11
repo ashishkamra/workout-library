@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Pause, Play } from "lucide-react";
+import { publicUrl } from "@/lib/public-url";
 import { cn } from "@/lib/utils";
 
 const VIDEO_IDS = [
@@ -89,8 +90,8 @@ export function ExerciseVisual({
       <video
         key={srcId}
         ref={videoRef}
-        src={`/videos/${srcId}.mp4`}
-        poster={`/videos/posters/${srcId}.jpg`}
+        src={publicUrl(`videos/${srcId}.mp4`)}
+        poster={publicUrl(`videos/posters/${srcId}.jpg`)}
         muted
         loop
         playsInline

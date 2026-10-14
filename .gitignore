@@ -14,3 +14,10 @@ screenshots
 *.log
 .nitro
 .vinxi
+
+# Local credentials and secret-scanner reports must never be committed.
+.grok/auth.json
+.grok/credentials.json
+.grok/secrets.json
+gitleaks-report*.json
+trufflehog-report*.json
